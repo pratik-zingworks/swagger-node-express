@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express();
 const swaggerJsdoc = require("swagger-jsdoc")
-const swaggerUi = require("swagger-ui-express")
+const swaggerUi = require("swagger-ui-express");
+var jsonDb = require('./DB/db.json')
 
 const PORT = process.env.PORT || 8000
 
@@ -34,8 +35,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  */
 
 app.get('/api', (req, res) => {
-    res.send("hey")
+    res.json(jsonDb.data)
 })
+
 app.listen(PORT, () => {
     console.log("server is working on " + PORT)
 })
