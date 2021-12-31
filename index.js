@@ -23,9 +23,19 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+/**
+ * @swagger
+ * /api:
+ *  get:
+ *      description: Use to request my-api.
+ *      responses:
+ *          '200':
+ *              a successful response
+ */
 
-
-
+app.get('/api', (req, res) => {
+    res.send("hey")
+})
 app.listen(PORT, () => {
     console.log("server is working on " + PORT)
 })
